@@ -5,7 +5,6 @@ const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 const filterOptions = document.querySelector('.filter-todo');
 
-
 //EventListeners 
 document.addEventListener('DOMContentLoaded', getTodos);
 todoButton.addEventListener('click', addTodo);
@@ -124,7 +123,6 @@ function filterTodo(e) {
     todoDiv.appendChild(newTodo);
     console.log(newTodo);
 
-
     //Check mark button
     const completeButton = document.createElement('button');
     completeButton.innerHTML = '<i class="far fa-check-square"></i>';
@@ -139,7 +137,6 @@ function filterTodo(e) {
 
     //append to list
     todoList.appendChild(todoDiv);
-
     });
   }
 
@@ -155,5 +152,21 @@ function filterTodo(e) {
     const todoIndex = todo.childNodes[0].innerText;
     todos.splice(todos.indexOf(todoIndex), 1);
     localStorage.setItem("todos", JSON.stringify(todos));
+  }
+
+  function sendEmail() {
+    var d= new Date();
+
+    Email.send({
+    Host: "smtp.gmail.com",
+    Username : "****@gmai.com",
+    Password : "********",
+    To : 'nibuzuku@acrossgracealley.com',
+    From : "****@gmail.com",
+    Subject : "Dor's Todo List" + "-" + d.getUTCDate() + '/' + d.getMonth(),
+    Body : JSON.parse(localStorage.getItem("todos")),
+    }).then(
+      message => alert("mail sent successfully")
+    );
   }
 
