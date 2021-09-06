@@ -4,12 +4,18 @@ const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 const filterOptions = document.querySelector('.filter-todo');
+const whatupAppInput = document.querySelector('.whatupApp-input');
+const whatupAppbutton = document.querySelector('.whatupApp-button');
+
 
 //EventListeners 
 document.addEventListener('DOMContentLoaded', getTodos);
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck)
 filterOptions.addEventListener('click', filterTodo)
+filterOptions.addEventListener('click', filterTodo)
+whatupAppbutton.addEventListener('click', test);
+
 
 //Functions 
 function addTodo(event)
@@ -169,4 +175,38 @@ function filterTodo(e) {
       message => alert("mail sent successfully")
     );
   }
+
+  function test()
+  {
+    
+    fetch('https://api.whatsapp.com/send?phone=+972507328808&text=hi', {
+      mode: 'no-cors',
+      }).then(function (response) {
+        console.log(response.type); // "opaque"
+    });
+
+    var client = new HttpClient();
+    client.get('https://api.whatsapp.com/send?phone=+972507328808&text=hi', function(response) {
+        // do something with response
+});
+
+  }
+  // function getLinkWhastapp() {
+  //   console.log(whatupAppInput.value)
+
+  //   var url = 'https://api.whatsapp.com/send?phone=' 
+  //      + whatupAppInput.value 
+  //      + '&text=' 
+  //      + encodeURIComponent(JSON.parse(localStorage.getItem("todos")))
+
+  //     console.log(url)
+
+  //   const Http = new XMLHttpRequest();
+  //   Http.open("GET", url);
+  //   Http.send();
+
+  //   Http.onreadystatechange = (e) => {
+  //     console.log(Http.responseText)
+      
+  // }
 
