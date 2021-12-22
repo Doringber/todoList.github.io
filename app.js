@@ -109,7 +109,6 @@ function filterTodo(e) {
   }
 
   function getTodos(){
-    console.log("hello");
     let todos;
     if (localStorage.getItem("todos") === null) {
       todos = [];
@@ -160,20 +159,20 @@ function filterTodo(e) {
     localStorage.setItem("todos", JSON.stringify(todos));
   }
 
-  function sendEmail() {
-    var d= new Date();
+  function newTest()
+  {
+    var fname = document.getElementById("fname").value;
+    var json_data = JSON.parse(localStorage.getItem("todos"))
+    var result = [];
 
-    Email.send({
-    Host: "smtp.gmail.com",
-    Username : "****@gmai.com",
-    Password : "********",
-    To : 'nibuzuku@acrossgracealley.com',
-    From : "****@gmail.com",
-    Subject : "Dor's Todo List" + "-" + d.getUTCDate() + '/' + d.getMonth(),
-    Body : JSON.parse(localStorage.getItem("todos")),
-    }).then(
-      message => alert("mail sent successfully")
-    );
+    for(var i in json_data)
+      result.push(json_data [i]);
+
+    console.log(result)
+    for (const child of todoList.children) {
+      window.open("mailto:" + fname +"?subject=TODO List&body=" + result);
+      // console.log(child.innerText);
+    }
   }
 
   function test()
