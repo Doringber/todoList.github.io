@@ -171,7 +171,6 @@ function filterTodo(e) {
     console.log(result)
     for (const child of todoList.children) {
       window.open("mailto:" + fname +"?subject=TODO List&body=" + result);
-      // console.log(child.innerText);
     }
   }
 
